@@ -1,9 +1,9 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const { createCard } = require('../src/card');
+const { createCard, evaluateGuess } = require('../src/card');
 
-describe('card', function() {
+describe('createCard', function() {
   it('should be a function', function() {
     expect(createCard).to.be.a('function');
   });
@@ -17,3 +17,32 @@ describe('card', function() {
     expect(card.correctAnswer).to.equal('object');
   });  
 });
+
+describe("evaluateGuess", function() {
+  beforeEach(() => {
+    card = {
+      id: 1,
+      question: "How many cans of beans can youeat before farting excessively?",
+      answers: [5, 7, 11],
+      correctAnswer: 5
+    }
+  });
+
+  it("should be a function", function() {
+    expect(evaluateGuess).to.be.a("function");
+  });
+
+  it("should evaluate if the guess is correct", function() {
+    let evaluation = evaluateGuess(5, card.correctAnswer);
+
+    expect(evaluation).to.equal("correct!");
+  });
+
+  it("should evaluate whether a guess is incorrect", function() {
+    let evaluation = evaluateGuess(19, card.correctAnswer);
+
+    expect(evaluation).to.equal("incorrect!");
+  });
+});
+
+
