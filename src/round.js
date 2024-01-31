@@ -21,8 +21,8 @@ function takeTurn(guess, round) {
     }
 }   
 
-function calculatePercentageCorrect() {
-    
+function calculatePercentageCorrect(round) {
+    return Math.round(((round.turns-round.incorrectGuesses.length)*100)/round.turns);
 }
 
 module.exports = {
