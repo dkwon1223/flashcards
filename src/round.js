@@ -21,7 +21,12 @@ function takeTurn(guess, round) {
     }
 }   
 
+function calculatePercentageCorrect() {
+    
+}
+
 module.exports = {
     createRound,
-    takeTurn
+    takeTurn,
+    calculatePercentageCorrect
 }
