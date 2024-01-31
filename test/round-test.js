@@ -51,7 +51,26 @@ describe("takeTurn", function() {
     });
 
     it("should update turns count for both correct and incorrect guesses", function() {
-        
+        takeTurn("index", round);
+        expect(round.turns).to.equal(1);
+        takeTurn("Texas", round);
+        expect(round.turns).to.equal(2);
+    });
+
+    it("should flip to next card", function() {
+        takeTurn("index", round);
+        expect(round.currentCard).to.deep.equal(deck[1]);
+    });
+
+    it("should return \"correct!\" for correct guesses", function() {
+        let correctGuess = takeTurn("index", round);
+        expect(correctGuess).to.equal("correct!");
+    });
+
+    it("should return \"incorrect!\" for incorrect guesses and store card ID in incorrectGuesses", function() {
+        let incorrectGuess = takeTurn("string", round);
+        expect(incorrectGuess).to.equal("incorrect!");
+        expect(round.incorrectGuess).to.deep.equal(deck[0].id);
     });
 
 });
