@@ -3,7 +3,7 @@ const expect = chai.expect;
 const { createCard } = require("../src/card");
 const { createDeck } = require("../src/deck");
 
-const { createRound, takeTurn, calculatePercentageCorrect } = require('../src/round');
+const { createRound, takeTurn, calculatePercentageCorrect, endRound } = require('../src/round');
 
 describe("createRound", function() {
     beforeEach(() => {
@@ -94,5 +94,26 @@ describe("calculatePercentageCorrect", function() {
         let calculation = calculatePercentageCorrect(round);
 
         expect(calculation).to.equal(67);
+    });
+});
+
+describe("endRound", function() {
+    it("should be a function", function() {
+        expect(endRound).to.be.a("function");
+    });
+
+    it("should print a round over and correct percentage message", function() {
+        card1 = createCard(1, "What do we call a position in an array?", ["object", "string", "index"], "index");
+        card2 = createCard(2, "What is the biggest U.S state?", ["Texas", "Montana", "Alaska"], "Alaska");
+        card3 = createCard(3, "How many licks to get to the center of a Tootsie Pop?", [365, 54, 112], 365);
+        cards = [card1, card2, card3];
+        deck = createDeck(cards);
+        round = createRound(deck);
+        takeTurn("index", round);
+        takeTurn("Texas", round);
+        takeTurn(365, round);
+        let end = endRound(round);
+
+        expect(end).to.equal("** Round Over! ** You answered 67% of the questions correctly!");
     });
 });
