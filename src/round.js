@@ -25,8 +25,10 @@ function calculatePercentageCorrect(round) {
     return Math.round(((round.turns-round.incorrectGuesses.length)*100)/round.turns);
 }
 
-function endRound() {
-    
+function endRound(round) {
+    let end = `** Round Over! ** You answered ${calculatePercentageCorrect(round)}% of the questions correctly!`;
+    console.log(end);
+    return end;
 }
 
 module.exports = {
