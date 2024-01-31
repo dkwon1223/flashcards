@@ -3,7 +3,7 @@ const expect = chai.expect;
 const { createCard } = require("../src/card");
 const { createDeck } = require("../src/deck");
 
-const { createRound } = require('../src/round');
+const { createRound, takeTurn } = require('../src/round');
 
 describe("createRound", function() {
     beforeEach(() => {
@@ -70,7 +70,13 @@ describe("takeTurn", function() {
     it("should return \"incorrect!\" for incorrect guesses and store card ID in incorrectGuesses", function() {
         let incorrectGuess = takeTurn("string", round);
         expect(incorrectGuess).to.equal("incorrect!");
-        expect(round.incorrectGuess).to.deep.equal(deck[0].id);
+        expect(round.incorrectGuesses).to.deep.equal([round.currentCard.id]);
     });
 
 });
+
+// describe("calculatePercentageCorrect", function() {
+//     it("should be a function", function() {
+//         expect(calculatePercentage)
+//     });
+// });
