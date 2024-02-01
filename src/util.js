@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const { takeTurn, endRound } = require('./round');
+const { takeTurn, endRound, beginReview } = require('./round');
 
 const genList = (round) => {
   let card = round.currentCard;
@@ -37,6 +37,7 @@ async function main(round) {
 
     if(!round.currentCard) {
       endRound(round);
+      beginReview(round);
     } else {
       main(round);
     }

@@ -14,5 +14,5 @@ describe("createFullDeck", function() {
         const fullDataDeck = createFullDeck(prototypeQuestions);
         expect(fullDataDeck).to.deep.equal(prototypeQuestions);
     });
-})
+});
 
