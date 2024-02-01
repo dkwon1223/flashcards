@@ -15,7 +15,7 @@ function createReviewDeck(round) {
 }
 
 function beginReview(round) {
-    console.log(`----------Please review the ${round.incorrectGuesses.length} question(s) you got incorrect...--------------------`);
+    console.log(`----------Please review the ${round.incorrectGuesses.length} question(s) you got incorrect...-------------------- `);
     return `Please review the ${round.incorrectGuesses.length} question(s) you got incorrect...`;
 }
 
