@@ -22,7 +22,7 @@ describe("evaluateGuess", function() {
   beforeEach(() => {
     card = {
       id: 1,
-      question: "How many cans of beans can youeat before farting excessively?",
+      question: "How many cans of beans can you eat before farting excessively?",
       answers: [5, 7, 11],
       correctAnswer: 5
     }
