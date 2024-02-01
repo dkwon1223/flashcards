@@ -1,4 +1,4 @@
-const { evaluateGuess } = require("./card");
+const { evaluateGuess } = require('./card');
 
 function createRound(deck) {
     return {
@@ -27,19 +27,18 @@ function calculatePercentageCorrect(round) {
 }
 
 function endRound(round) {
-    console.log(`** Round Over! ** You answered ${calculatePercentageCorrect(round)}% of the questions correctly!`);
+    console.log(`----------** Round Over! ** You answered ${calculatePercentageCorrect(round)}% of the questions correctly!----------`);
+    console.log(`----------------------------------------------------------------------------------`);
+    console.log(`----------------------------------------------------------------------------------`);
+    console.log(`----------------------------------------------------------------------------------`);
     return `** Round Over! ** You answered ${calculatePercentageCorrect(round)}% of the questions correctly!`;
 }
 
-function beginReview(round) {
-    console.log(`Please reattempt the ${round.incorrectGuesses.length} question(s) you got incorrect...`);
-    return `Please reattempt the ${round.incorrectGuesses.length} question(s) you got incorrect...`;
-}
+
 
 module.exports = {
     createRound,
     takeTurn,
     calculatePercentageCorrect,
-    endRound,
-    beginReview
+    endRound
 }
