@@ -1,5 +1,4 @@
 const { evaluateGuess } = require("./card");
-const { printQuestion } = require("./game");
 
 function createRound(deck) {
     return {
@@ -29,24 +28,12 @@ function calculatePercentageCorrect(round) {
 
 function endRound(round) {
     console.log(`** Round Over! ** You answered ${calculatePercentageCorrect(round)}% of the questions correctly!`);
+    return `** Round Over! ** You answered ${calculatePercentageCorrect(round)}% of the questions correctly!`;
 }
 
 function beginReview(round) {
-    console.log(`Please reattempt the ${round.incorrectGuesses.length} questions you got incorrect...`);
-    createReview(round);
-}
-
-function createReview(round) {
-    let reviewDeck = [];
-    round.incorrectGuesses.forEach((guess) => {
-        round.deck.forEach((card) => {
-            if(guess === card.id) {
-                reviewDeck.push(card);
-            }
-        })
-    })
-    console.log(round);
-    return reviewDeck;
+    console.log(`Please reattempt the ${round.incorrectGuesses.length} question(s) you got incorrect...`);
+    return `Please reattempt the ${round.incorrectGuesses.length} question(s) you got incorrect...`;
 }
 
 module.exports = {

@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const { takeTurn, endRound, beginReview } = require('./round');
+const { createRound, takeTurn, endRound, beginReview } = require('./round');
 
 const genList = (round) => {
   let card = round.currentCard;
@@ -35,7 +35,9 @@ async function main(round) {
   const getAnswer = await inquirer.prompt(genList(currentRound));
   const getConfirm = await inquirer.prompt(confirmUpdate(getAnswer.answers, round));
 
-    if(!round.currentCard) {
+    if(!round.currentCard && round.incorrectGuesses.length === 0) {
+      endRound(round);
+    } else if(!round.currentCard && round.incorrectGuesses.length > 0) {
       endRound(round);
       beginReview(round);
     } else {
