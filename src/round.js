@@ -12,7 +12,7 @@ function createRound(deck) {
 function takeTurn(guess, round) {
     let result = evaluateGuess(guess, round.currentCard.correctAnswer);
     round.turns ++;
-    round.currentCard = deck[deck.indexOf(round.currentCard) + 1];
+    round.currentCard = round.deck[round.deck.indexOf(round.currentCard) + 1];
     if(result === "incorrect!") {
         round.incorrectGuesses.push(round.currentCard.id);
         return result;
@@ -26,9 +26,7 @@ function calculatePercentageCorrect(round) {
 }
 
 function endRound(round) {
-    let end = `** Round Over! ** You answered ${calculatePercentageCorrect(round)}% of the questions correctly!`;
-    console.log(end);
-    return end;
+    return `** Round Over! ** You answered ${calculatePercentageCorrect(round)}% of the questions correctly!`;;
 }
 
 module.exports = {
