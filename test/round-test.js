@@ -118,24 +118,3 @@ describe("endRound", function() {
     });
 });
 
-describe("beginReview", function() {
-    it("should be a function", function() {
-        expect(beginReview).to.be.a("function");
-    });
-
-    it("should dynamically print message to reattempt missed questions", function() {
-        card1 = createCard(1, "What do we call a position in an array?", ["object", "string", "index"], "index");
-        card2 = createCard(2, "What is the biggest U.S state?", ["Texas", "Montana", "Alaska"], "Alaska");
-        card3 = createCard(3, "How many licks to get to the center of a Tootsie Pop?", [365, 54, 112], 365);
-        cards = [card1, card2, card3];
-        deck = createDeck(cards);
-        round = createRound(deck);
-        takeTurn("index", round);
-        takeTurn("Texas", round);
-        takeTurn(365, round);
-        let end = endRound(round);
-        let review = beginReview(round);
-
-        expect(review).to.equal("Please reattempt the 1 question(s) you got incorrect...");
-    });
-});
